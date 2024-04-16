@@ -1,0 +1,66 @@
+<template>
+  <base-card>
+    <base-button @click="setSelectedTab('stored-resources')" :mode="storedButtonMode"
+      >Stored Resources</base-button
+    >
+    <base-button @click="setSelectedTab('add-resource')" :mode="addButtonMode"
+      >Add Resource</base-button
+    >
+  </base-card>
+  <component :is="selectedTab"></component>
+</template>
+
+<script>
+import StoredResources from './StoredResources.vue'
+import AddResource from './AddResource.vue'
+
+export default {
+  components: {
+    StoredResources,
+    AddResource
+  },
+  data() {
+    return {
+      selectedTab: 'stored-resources',
+      storedResources: [
+        {
+          id: 'offical-guide',
+          title: 'Offical Guide',
+          description: 'The offical Vue.js documentation',
+          link: 'https://vuejs.org'
+        },
+        {
+          id: 'stack-overflow',
+          title: 'Stack Overflow',
+          description: 'The best Q&A site for computer programmers',
+          link: 'https://stackoverflow.com/'
+        },
+        {
+          id: 'js-docs',
+          title: 'MDN - JavaScript guide',
+          description: 'Complete guide to JavaScript',
+          link: 'https://developer.mozilla.org'
+        }
+      ]
+    }
+  },
+  provide() {
+    return {
+      resources: this.storedResources
+    }
+  },
+  computed: {
+    storedButtonMode() {
+      return this.selectedTab === 'stored-resources' ? null : 'flat'
+    },
+    addButtonMode() {
+      return this.selectedTab === 'add-resource' ? null : 'flat'
+    }
+  },
+  methods: {
+    setSelectedTab(tab) {
+      this.selectedTab = tab
+    }
+  }
+}
+</script>
