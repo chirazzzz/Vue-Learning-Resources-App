@@ -7,7 +7,9 @@
       >Add Resource</base-button
     >
   </base-card>
-  <component :is="selectedTab" @new-resource="addResource"></component>
+  <keep-alive>
+    <component :is="selectedTab"></component>
+  </keep-alive>
 </template>
 
 <script>
@@ -46,7 +48,8 @@ export default {
   },
   provide() {
     return {
-      resources: this.storedResources
+      resources: this.storedResources,
+      addResource: this.addResource
     }
   },
   computed: {

@@ -22,6 +22,7 @@
 
 <script>
 export default {
+  inject: ['addResource'],
   emits: ['new-resource'],
   data() {
     return {
@@ -32,7 +33,7 @@ export default {
   },
   methods: {
     submitResource() {
-      this.$emit('new-resource', this.enteredTitle, this.enteredDesc, this.enteredLink)
+      this.addResource(this.enteredTitle, this.enteredDesc, this.enteredLink)
     }
   }
 }
