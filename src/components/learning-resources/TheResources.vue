@@ -49,7 +49,8 @@ export default {
   provide() {
     return {
       resources: this.storedResources,
-      addResource: this.addResource
+      addResource: this.addResource,
+      deleteResource: this.deleteResource
     }
   },
   computed: {
@@ -73,6 +74,14 @@ export default {
       }
       this.storedResources.unshift(newResource)
       this.selectedTab = 'stored-resources'
+    },
+    deleteResource(resId) {
+      /* This removes the element but creates a new storedResources array which isn't what Vue displays
+      this.storedResources = this.storedResources.filter(res => res.id !== resId) */
+
+      // Vue passes the original array so you have to alter THAT storedResources array
+      const resIndex = this.storedResources.findIndex((res) => res.id === resId)
+      this.storedResources.splice(resIndex, 1)
     }
   }
 }
