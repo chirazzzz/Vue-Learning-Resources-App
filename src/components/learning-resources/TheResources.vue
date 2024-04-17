@@ -26,9 +26,9 @@ export default {
       selectedTab: 'stored-resources',
       storedResources: [
         {
-          id: 'offical-guide',
-          title: 'Offical Guide',
-          description: 'The offical Vue.js documentation',
+          id: 'official-guide',
+          title: 'Official Guide',
+          description: 'The official Vue.js documentation',
           link: 'https://vuejs.org'
         },
         {
