@@ -47,7 +47,7 @@ export default {
         return
       }
 
-      this.addResource(this.enteredTitle, this.enteredDesc, this.enteredLink)
+      this.addResource(enteredTitle, enteredDesc, enteredLink)
     },
     confirmError() {
       this.inputIsInvalid = false
